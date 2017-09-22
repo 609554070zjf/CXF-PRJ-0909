@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    	#result{
+    		margin-top: 20px;
+    	}
+    </style>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+
+        /**
+         * [loadStudentByStuNo 通过学生学号获取学生]
+         */
+        function loadStudentByStuNo(){
+            var stuNo = $("#stuNo").val();
+            $.getJSON("http://localhost:8080/CXF-PRJ-0908/cxf/studentServiceRest/studentService/student/"+stuNo,function(json){
+                if(json){
+                	$("#result").html("学生姓名："+json.stuName+"<br>"+
+                					  "学生性别："+(json.stuSex==='M'?'男':'女')+"<br>"+
+                					  "学生地址："+json.stuAddress);
+                }else{
+                	$("#result").html("您查找的学生不存在！");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="stuNo">请输入学生的学号：</label>
+        <input type="text" id="stuNo">
+        <button onclick="loadStudentByStuNo();">查询</button>
+    </div>
+    <div id="result">
+    	
+    </div>
+
+</body>
+</html>
