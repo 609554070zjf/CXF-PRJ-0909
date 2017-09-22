@@ -1,4 +1,5 @@
 ## 工程简述：  
+工程使用Maven构建
 使用CXF框架来实现restful服务  
 数据库：MySQL  
 使用MyBatis的Mapper代理的方式来访问数据库  
